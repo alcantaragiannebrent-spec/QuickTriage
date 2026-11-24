@@ -56,13 +56,14 @@
       },
       {
         id: "fit",
-        title: "Would it need repairs before you could wear it?",
-        help: "Missing buttons, a stuck zipper, tears at the seam.",
-        tip: "Anything that needs sewing is a project, not a purchase. Put it back.",
+        title: "Is it ready to wear without repairs?",
+        help: "Check for missing buttons, a stuck zipper, or torn seams.",
+        tip: "If it needs mending before you can wear it, answer no.",
         plain: "Wearable without repairs",
         failLabel: "repairs before wear",
         suggestion: "Check the repair and cost; if it is more than a quick, affordable fix, leave it.",
-        invert: true // a "yes, it needs repairs" answer counts as a failed check
+        yesLabel: "Yes, it's ready to wear",
+        noLabel: "No, it needs repairs"
       },
       {
         id: "confidence",
@@ -243,19 +244,13 @@
 
     // The third check is the tiebreaker — label the buttons accordingly
     var isLast = state.step === questions.length - 1;
-    screens.triage.classList.toggle("qt-inverted-question", Boolean(question.invert));
-    if (question.invert) {
-      els.yes.innerHTML = ICONS.cross + "Yes, it needs repairs";
-      els.no.innerHTML = ICONS.check + "No, it's ready to wear";
-    } else {
-      els.yes.innerHTML = ICONS.check + (isLast ? "Yes, I'd wear it" : "Yes, that's covered");
-      els.no.innerHTML = ICONS.cross + (isLast ? "No, I wouldn't" : "No, it isn't");
-    }
+    els.yes.innerHTML = ICONS.check + (question.yesLabel || (isLast ? "Yes, I'd wear it" : "Yes, that's covered"));
+    els.no.innerHTML = ICONS.cross + (question.noLabel || (isLast ? "No, I wouldn't" : "No, it isn't"));
 
-    els.yes.classList.toggle("qt-btn-yes", !question.invert);
-    els.yes.classList.toggle("qt-btn-no", Boolean(question.invert));
-    els.no.classList.toggle("qt-btn-no", !question.invert);
-    els.no.classList.toggle("qt-btn-yes", Boolean(question.invert));
+    els.yes.classList.add("qt-btn-yes");
+    els.yes.classList.remove("qt-btn-no");
+    els.no.classList.add("qt-btn-no");
+    els.no.classList.remove("qt-btn-yes");
 
     els.back.textContent = state.step === 0 ? "← Change mode" : "← Back";
 
@@ -267,7 +262,7 @@
     var question = questions[state.step];
     if (!question) return;
 
-    state.answers[question.id] = question.invert ? !passed : passed;
+    state.answers[question.id] = passed;
 
     if (state.step < questions.length - 1) {
       state.step += 1;
