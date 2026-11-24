@@ -1,0 +1,149 @@
+/* ==========================================================================
+   QuickTriage — shared stylesheet
+   Used by index.html (home page) and session.html (the triage app).
+   Load order: styles.css, then home.css or session.css.
+   ========================================================================== */
+
+:root {
+  /* Brand palette — pulled from the QuickTriage session app */
+  --qt-primary: #d97706;
+  --qt-primary-strong: #b45309;
+  --qt-primary-deep: #8c3b06;
+  --qt-primary-soft: #fef3c7;
+  --qt-primary-border: #fcd34d;
+
+  --qt-success: #2b7a4b;
+  --qt-success-strong: #21613b;
+  --qt-success-soft: #e9f6ee;
+
+  --qt-danger: #c6472c;
+  --qt-danger-strong: #9e3a22;
+  --qt-danger-soft: #fdedea;
+
+  /* Neutrals / surfaces */
+  --qt-text: #261e17;
+  --qt-muted: #756556;
+  --qt-faint: #9a8a79;
+  --qt-line: #e8dcd0;
+  --qt-surface: #fffdfb;
+  --qt-surface-2: #faf3ea;
+  --qt-surface-hover: #f3e7d8;
+  --qt-cream: #fdf6ec;
+
+  /* Shape & motion */
+  --qt-radius-lg: 26px;
+  --qt-radius-md: 16px;
+  --qt-radius-sm: 14px;
+  --qt-ease: cubic-bezier(0.22, 0.8, 0.3, 1);
+  --qt-shadow: 0 18px 36px -14px rgba(74, 48, 24, 0.18), 0 4px 12px rgba(74, 48, 24, 0.06);
+  --qt-shadow-sm: 0 2px 8px rgba(74, 48, 24, 0.06);
+
+  /* Type */
+  --qt-font-body: "Figtree", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --qt-font-head: "Manrope", "Figtree", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+
+  /* Layout */
+  --qt-max: 1180px;
+  --qt-gutter: 24px;
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--qt-font-body);
+  color: var(--qt-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+}
+
+img,
+svg { display: block; max-width: 100%; }
+
+h1, h2, h3, h4, p, ul, li, figure { margin: 0; padding: 0; }
+
+ul { list-style: none; }
+
+a { color: inherit; text-decoration: none; }
+
+button { font: inherit; color: inherit; }
+
+/* Consistent, visible focus for keyboard users everywhere */
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--qt-primary);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ---------- Shared primitives ---------- */
+.qt-container {
+  width: 100%;
+  max-width: var(--qt-max);
+  margin: 0 auto;
+  padding: 0 var(--qt-gutter);
+}
+
+.qt-skip-link {
+  position: absolute;
+  left: 16px;
+  top: -80px;
+  z-index: 100;
+  padding: 12px 20px;
+  background: var(--qt-text);
+  color: #fff;
+  border-radius: 0 0 12px 12px;
+  font-weight: 700;
+  transition: top 0.2s var(--qt-ease);
+}
+.qt-skip-link:focus { top: 0; }
+
+.qt-visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Small caps label used above headings */
+.qt-kicker {
+  font-family: var(--qt-font-head);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--qt-primary-strong);
+}
+
+.qt-icon {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 auto;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+/* ---------- Global reduced-motion respect ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

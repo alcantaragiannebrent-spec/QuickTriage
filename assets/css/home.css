@@ -1,0 +1,574 @@
+/* ==========================================================================
+   QuickTriage — home page styles
+   ========================================================================== */
+
+body.qt-home {
+  background: var(--qt-cream);
+  color: var(--qt-text);
+  line-height: 1.55;
+}
+
+/* ---------- Header ---------- */
+.qt-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(253, 246, 236, 0.92);
+  backdrop-filter: saturate(140%) blur(10px);
+  -webkit-backdrop-filter: saturate(140%) blur(10px);
+  border-bottom: 1px solid rgba(232, 220, 208, 0.7);
+}
+
+.qt-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 68px;
+}
+
+.qt-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--qt-font-head);
+  font-size: 1.02rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--qt-text);
+  white-space: nowrap;
+}
+
+.qt-logo svg {
+  width: 26px;
+  height: 26px;
+  flex: 0 0 auto;
+}
+.qt-logo .qt-icon { stroke-width: 2; }
+
+.qt-nav {
+  display: none;
+  align-items: center;
+  gap: 30px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--qt-muted);
+}
+@media (min-width: 760px) { .qt-nav { display: flex; } }
+
+.qt-nav a {
+  position: relative;
+  padding: 4px 0;
+  transition: color 0.18s ease;
+}
+.qt-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1.5px;
+  background: var(--qt-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.22s var(--qt-ease);
+}
+.qt-nav a:hover { color: var(--qt-text); }
+.qt-nav a:hover::after { transform: scaleX(1); }
+
+/* ---------- Buttons ---------- */
+.qt-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 14px 24px;
+  font-size: 0.94rem;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  line-height: 1.2;
+  border: 1.5px solid transparent;
+  border-radius: 999px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.18s ease, border-color 0.18s ease,
+              box-shadow 0.18s ease, transform 0.14s ease, color 0.18s ease;
+}
+
+.qt-btn .qt-icon { width: 17px; height: 17px; stroke-width: 2.25; }
+
+.qt-btn--primary {
+  background: linear-gradient(135deg, #e27c14 0%, #c45c06 100%);
+  color: #fff;
+  box-shadow: 0 10px 20px -8px rgba(217, 119, 6, 0.5);
+}
+@media (hover: hover) {
+  .qt-btn--primary:hover {
+    background: linear-gradient(135deg, #d4700c 0%, #ae5004 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 14px 26px -10px rgba(217, 119, 6, 0.55);
+  }
+}
+.qt-btn--primary:active { transform: scale(0.985); }
+
+.qt-btn--ghost {
+  background: transparent;
+  color: var(--qt-text);
+  border-color: #d6c2ad;
+}
+@media (hover: hover) {
+  .qt-btn--ghost:hover { background: rgba(255, 253, 251, 0.7); border-color: var(--qt-muted); }
+}
+
+.qt-btn--sm { padding: 11px 20px; font-size: 0.87rem; }
+
+.qt-header .qt-btn--primary { display: none; }
+@media (min-width: 620px) { .qt-header .qt-btn--primary { display: inline-flex; } }
+
+/* Text link with arrow */
+.qt-textlink {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--qt-primary-strong);
+  padding: 6px 0;
+  border-bottom: 1.5px solid transparent;
+  transition: border-color 0.18s ease, gap 0.18s var(--qt-ease);
+}
+.qt-textlink .qt-icon { width: 16px; height: 16px; stroke-width: 2.25; }
+.qt-textlink:hover { border-color: var(--qt-primary-strong); gap: 11px; }
+
+/* ---------- Hero ---------- */
+.qt-hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(48px, 7vw, 92px) 0 clamp(56px, 8vw, 104px);
+}
+
+/* soft warm glow behind the hero */
+.qt-hero::before {
+  content: "";
+  position: absolute;
+  top: -160px;
+  right: -120px;
+  width: 620px;
+  height: 620px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.2) 0%, rgba(251, 191, 36, 0) 68%);
+  pointer-events: none;
+}
+
+.qt-hero-grid {
+  position: relative;
+  display: grid;
+  gap: clamp(36px, 5vw, 64px);
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .qt-hero-grid { grid-template-columns: minmax(0, 1.02fr) minmax(0, 1fr); }
+}
+
+.qt-hero-copy { max-width: 34rem; }
+
+.qt-hero h1 {
+  font-family: var(--qt-font-head);
+  font-size: clamp(2.35rem, 5.2vw, 3.9rem);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+  margin: 18px 0 22px;
+}
+
+.qt-hero-lede {
+  font-size: clamp(1rem, 1.25vw, 1.08rem);
+  line-height: 1.65;
+  color: var(--qt-muted);
+  max-width: 30rem;
+}
+
+.qt-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 22px;
+  margin-top: 32px;
+}
+
+/* Tiny trust row under the buttons */
+.qt-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+  margin-top: 30px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--qt-faint);
+}
+.qt-hero-meta li { display: inline-flex; align-items: center; gap: 7px; }
+.qt-hero-meta .qt-icon { width: 15px; height: 15px; color: var(--qt-success); stroke-width: 2.25; }
+
+/* Hero photo frame */
+.qt-hero-figure {
+  position: relative;
+  margin: 0;
+}
+.qt-hero-figure::after {
+  content: "";
+  position: absolute;
+  inset: 14px -14px -14px 14px;
+  border-radius: 24px;
+  background: var(--qt-surface-2);
+  border: 1px solid var(--qt-line);
+  z-index: -1;
+}
+
+.qt-hero-img,
+.qt-hero-figure img {
+  width: 100%;
+  aspect-ratio: 4 / 4.4;
+  object-fit: cover;
+  border-radius: 22px;
+  border: 1px solid rgba(232, 220, 208, 0.9);
+  box-shadow: var(--qt-shadow);
+  background: var(--qt-surface-2);
+}
+
+/* Floating "verdict" chip on the photo */
+.qt-hero-chip {
+  position: absolute;
+  left: -6px;
+  bottom: 26px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 17px 11px 13px;
+  background: rgba(255, 253, 251, 0.96);
+  border: 1px solid var(--qt-line);
+  border-radius: 999px;
+  box-shadow: 0 14px 30px -14px rgba(74, 48, 24, 0.45);
+  font-size: 0.81rem;
+  font-weight: 700;
+  color: var(--qt-text);
+  white-space: nowrap;
+}
+.qt-hero-chip span.qt-chip-dot {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--qt-success-soft);
+  color: var(--qt-success-strong);
+}
+.qt-hero-chip .qt-icon { width: 13px; height: 13px; stroke-width: 3; }
+@media (max-width: 560px) { .qt-hero-chip { display: none; } }
+
+/* ---------- Band (tinted section) ---------- */
+.qt-band {
+  position: relative;
+  padding: clamp(52px, 7vw, 88px) 0;
+}
+.qt-band--sand {
+  background: linear-gradient(180deg, #fbf1e3 0%, #f9eddd 100%);
+  border-top: 1px solid rgba(232, 220, 208, 0.75);
+  border-bottom: 1px solid rgba(232, 220, 208, 0.75);
+}
+
+.qt-section-head { max-width: 44rem; }
+.qt-section-head h2 {
+  font-family: var(--qt-font-head);
+  font-size: clamp(1.65rem, 3vw, 2.35rem);
+  font-weight: 800;
+  line-height: 1.16;
+  letter-spacing: -0.028em;
+  margin: 14px 0 14px;
+}
+.qt-section-head p {
+  font-size: 0.97rem;
+  line-height: 1.65;
+  color: var(--qt-muted);
+  max-width: 38rem;
+}
+
+/* ---------- Step cards (how it works) ---------- */
+.qt-steps {
+  display: grid;
+  gap: 18px;
+  margin-top: 46px;
+}
+@media (min-width: 720px) { .qt-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+.qt-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 26px 22px 24px;
+  background: rgba(255, 253, 251, 0.82);
+  border: 1px solid rgba(232, 220, 208, 0.95);
+  border-radius: 20px;
+  transition: transform 0.24s var(--qt-ease), box-shadow 0.24s ease,
+              background-color 0.24s ease, border-color 0.24s ease;
+}
+@media (hover: hover) {
+  .qt-step:hover {
+    transform: translateY(-4px);
+    background: var(--qt-surface);
+    border-color: #ddc9b4;
+    box-shadow: 0 18px 34px -20px rgba(74, 48, 24, 0.4);
+  }
+}
+
+.qt-step-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 20px;
+  border-radius: 13px;
+  background: var(--qt-surface);
+  border: 1px solid var(--qt-line);
+  color: var(--qt-primary-strong);
+  box-shadow: var(--qt-shadow-sm);
+}
+.qt-step-icon .qt-icon { width: 21px; height: 21px; }
+
+.qt-step-num {
+  position: absolute;
+  top: 26px;
+  right: 22px;
+  font-family: var(--qt-font-head);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--qt-faint);
+}
+
+.qt-step h3 {
+  font-family: var(--qt-font-head);
+  font-size: 1.03rem;
+  font-weight: 700;
+  letter-spacing: -0.012em;
+  margin-bottom: 8px;
+}
+.qt-step p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--qt-muted);
+}
+
+/* ---------- Checklist cards (why it works) ---------- */
+.qt-checklist {
+  display: grid;
+  gap: 18px;
+  margin-top: 46px;
+}
+@media (min-width: 720px) { .qt-checklist { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+.qt-check-card {
+  padding: 26px 24px 24px;
+  background: var(--qt-surface);
+  border: 1px solid var(--qt-line);
+  border-radius: 20px;
+  box-shadow: var(--qt-shadow-sm);
+  transition: transform 0.24s var(--qt-ease), box-shadow 0.24s ease;
+}
+@media (hover: hover) {
+  .qt-check-card:hover { transform: translateY(-3px); box-shadow: 0 18px 34px -22px rgba(74, 48, 24, 0.42); }
+}
+
+/* Icon sits in a soft circle that signals pass / fail */
+.qt-check-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 18px;
+  border-radius: 50%;
+  border: 1px solid #f5c0b5;
+  background: var(--qt-danger-soft);
+  color: var(--qt-danger-strong);
+}
+.qt-check-icon .qt-icon { width: 18px; height: 18px; stroke-width: 2.25; }
+
+.qt-check-icon--pass {
+  border-color: #b4dfc4;
+  background: var(--qt-success-soft);
+  color: var(--qt-success-strong);
+}
+
+.qt-check-card h3 {
+  font-family: var(--qt-font-head);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 9px;
+}
+.qt-check-card p {
+  font-size: 0.89rem;
+  line-height: 1.62;
+  color: var(--qt-muted);
+}
+
+.qt-check-quote {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--qt-line);
+  font-size: 0.83rem;
+  font-style: italic;
+  color: var(--qt-faint);
+}
+
+/* ---------- Closing CTA ---------- */
+.qt-cta {
+  padding: clamp(56px, 8vw, 96px) 0;
+  text-align: center;
+}
+.qt-cta h2 {
+  font-family: var(--qt-font-head);
+  font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.14;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+.qt-cta p {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--qt-muted);
+  max-width: 34rem;
+  margin: 0 auto 30px;
+}
+
+/* Small card showing the app preview in the CTA */
+.qt-cta-app {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 34px;
+  padding: 14px 20px;
+  background: var(--qt-surface);
+  border: 1px solid var(--qt-line);
+  border-radius: 16px;
+  text-align: left;
+  box-shadow: var(--qt-shadow-sm);
+  font-size: 0.84rem;
+  color: var(--qt-muted);
+}
+.qt-cta-app strong { display: block; color: var(--qt-text); font-size: 0.9rem; margin-bottom: 2px; }
+.qt-cta-app .qt-icon { width: 20px; height: 20px; color: var(--qt-primary); }
+
+/* ---------- Footer ---------- */
+.qt-footer {
+  background: #261e17;
+  color: #d9cbbd;
+  padding: clamp(44px, 6vw, 64px) 0 30px;
+}
+
+.qt-footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px 40px;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(217, 203, 189, 0.16);
+}
+
+.qt-footer .qt-logo { color: #fffdfb; }
+.qt-footer .qt-logo svg { color: var(--qt-primary-border); }
+
+.qt-footer-blurb {
+  margin-top: 12px;
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: #a4927f;
+  max-width: 22rem;
+}
+
+.qt-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 34px;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+.qt-footer-links a { color: #d9cbbd; transition: color 0.18s ease; }
+.qt-footer-links a:hover { color: #fff; }
+
+.qt-footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+  font-size: 0.79rem;
+  color: #8a7967;
+}
+
+/* ---------- Section rail (desktop only) ---------- */
+#qt-rail {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+  display: none;
+  flex-direction: column;
+  gap: 14px;
+  pointer-events: none;
+}
+@media (min-width: 1200px) { #qt-rail { display: flex; } }
+
+#qt-rail a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 2px 0;
+  pointer-events: auto;
+}
+
+#qt-rail .qt-dot {
+  display: block;
+  flex: 0 0 auto;
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: #c9b7a3;
+  box-shadow: 0 0 0 4px rgba(255, 253, 251, 0.72);
+  transition: transform 0.22s var(--qt-ease), background-color 0.22s ease;
+}
+#qt-rail a:hover .qt-dot { transform: scale(1.25); background: #7a6a5b; }
+#qt-rail a.qt-on .qt-dot {
+  background: var(--qt-text);
+  transform: scale(1.5);
+  box-shadow: 0 0 0 5px rgba(255, 253, 251, 0.92);
+}
+
+#qt-rail .qt-lbl {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--qt-text);
+  background: rgba(255, 253, 251, 0.94);
+  border: 1px solid var(--qt-line);
+  border-radius: 999px;
+  padding: 5px 10px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-6px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  box-shadow: 0 6px 16px -8px rgba(74, 48, 24, 0.35);
+}
+#qt-rail a:hover .qt-lbl,
+#qt-rail a.qt-on .qt-lbl,
+#qt-rail:hover .qt-lbl {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
