@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 860" width="900" height="860" role="img" aria-labelledby="t">
+  <title id="t">Illustration placeholder: a person browsing a rack of secondhand clothing</title>
+
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0.35" y2="1">
+      <stop offset="0" stop-color="#f7e8d4"/>
+      <stop offset="1" stop-color="#eeddc5"/>
+    </linearGradient>
+    <linearGradient id="clothA" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d97706"/>
+      <stop offset="1" stop-color="#b45309"/>
+    </linearGradient>
+    <linearGradient id="clothB" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4f7f63"/>
+      <stop offset="1" stop-color="#3a6350"/>
+    </linearGradient>
+    <linearGradient id="clothC" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c96a4e"/>
+      <stop offset="1" stop-color="#a8513a"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e5d2b9"/>
+      <stop offset="1" stop-color="#d8c2a6"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.72" cy="0.18" r="0.6">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="860" fill="url(#wall)"/>
+
+  <!-- Back wall panel lines -->
+  <g stroke="#e0cbb0" stroke-width="2" opacity="0.55">
+    <path d="M0 178h900"/>
+    <path d="M0 716h900"/>
+  </g>
+
+  <!-- Window light -->
+  <rect x="0" y="0" width="900" height="860" fill="url(#glow)"/>
+
+  <!-- Floor -->
+  <path d="M0 716h900v144H0z" fill="url(#floor)"/>
+
+  <!-- ============ Clothing rack ============ -->
+  <g>
+    <!-- Rack frame -->
+    <path d="M132 236h636" stroke="#8a6f52" stroke-width="11" stroke-linecap="round"/>
+    <path d="M168 236v470" stroke="#8a6f52" stroke-width="10" stroke-linecap="round"/>
+    <path d="M732 236v470" stroke="#8a6f52" stroke-width="10" stroke-linecap="round"/>
+    <!-- Feet -->
+    <path d="M126 706h84" stroke="#8a6f52" stroke-width="11" stroke-linecap="round"/>
+    <path d="M690 706h84" stroke="#8a6f52" stroke-width="11" stroke-linecap="round"/>
+
+    <!-- Hanging clothes: each garment is a hook + shoulder + body -->
+    <g stroke-linecap="round">
+      <!-- garment 1 -->
+      <g>
+        <path d="M196 236v22" stroke="#b99a76" stroke-width="4"/>
+        <path d="M196 258c0 0 -46 10 -46 34v96c0 12 8 18 20 18h52c12 0 20-6 20-18v-96c0-24-46-34-46-34z" fill="url(#clothC)"/>
+        <path d="M196 258v148" stroke="#8f4430" stroke-width="3" opacity="0.5"/>
+      </g>
+      <!-- garment 2 -->
+      <g>
+        <path d="M300 236v22" stroke="#b99a76" stroke-width="4"/>
+        <path d="M300 258c0 0 -50 10 -50 36v128c0 13 9 20 22 20h56c13 0 22-7 22-20v-128c0-26-50-36-50-36z" fill="url(#clothB)"/>
+        <path d="M300 258c0 0 -14 34 -14 92s14 92 14 92" fill="none" stroke="#33573f" stroke-width="3" opacity="0.45"/>
+      </g>
+      <!-- garment 3 -->
+      <g>
+        <path d="M412 236v22" stroke="#b99a76" stroke-width="4"/>
+        <path d="M412 258c0 0 -54 12 -54 38v112c0 13 9 20 22 20h64c13 0 22-7 22-20v-112c0-26-54-38-54-38z" fill="url(#clothA)"/>
+        <path d="M412 258v170" stroke="#8c3b06" stroke-width="3" opacity="0.4"/>
+        <circle cx="412" cy="316" r="4.5" fill="#fde9c8" opacity="0.9"/>
+        <circle cx="412" cy="346" r="4.5" fill="#fde9c8" opacity="0.9"/>
+        <circle cx="412" cy="376" r="4.5" fill="#fde9c8" opacity="0.9"/>
+      </g>
+      <!-- garment 4 -->
+      <g>
+        <path d="M520 236v22" stroke="#b99a76" stroke-width="4"/>
+        <path d="M520 258c0 0 -48 10 -48 34v104c0 12 8 18 20 18h56c12 0 20-6 20-18v-104c0-24-48-34-48-34z" fill="#e8d3b4"/>
+        <path d="M520 258v156" stroke="#c7ac88" stroke-width="3" opacity="0.7"/>
+      </g>
+      <!-- garment 5 -->
+      <g>
+        <path d="M628 236v22" stroke="#b99a76" stroke-width="4"/>
+        <path d="M628 258c0 0 -52 11 -52 36v120c0 13 9 20 22 20h60c13 0 22-7 22-20v-120c0-25-52-36-52-36z" fill="url(#clothB)"/>
+        <path d="M628 258v176" stroke="#33573f" stroke-width="3" opacity="0.45"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- Shadow on the floor, behind the figure -->
+  <ellipse cx="440" cy="826" rx="190" ry="22" fill="#c3ab8d" opacity="0.4"/>
+
+  <!-- ============ Person browsing ============ -->
+  <g>
+    <!-- Hip and pants -->
+    <path d="M337 642c0-18 12-28 28-28h144c16 0 28 10 28 28l-2 62H339z" fill="#354650"/>
+
+    <!-- Legs -->
+    <path d="M404 680v122" stroke="#354650" stroke-width="32" stroke-linecap="round"/>
+    <path d="M470 680v122" stroke="#354650" stroke-width="32" stroke-linecap="round"/>
+    <!-- Shoes -->
+    <path d="M382 812h52" stroke="#26201a" stroke-width="20" stroke-linecap="round"/>
+    <path d="M452 812h50" stroke="#26201a" stroke-width="20" stroke-linecap="round"/>
+
+    <!-- Torso (jacket) -->
+    <path d="M437 470c-58 0-92 24-100 62l-14 108c-2 16 8 26 24 26h180c16 0 26-10 24-26l-14-108c-8-38-42-62-100-62z" fill="#3f6f5a"/>
+    <!-- Jacket opening -->
+    <path d="M437 474v192" stroke="#2f5745" stroke-width="7" stroke-linecap="round"/>
+    <!-- Collar -->
+    <path d="M400 476l37 34 37-34" fill="none" stroke="#2f5745" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Neck -->
+    <path d="M437 424v52" stroke="#c98f68" stroke-width="34" stroke-linecap="round"/>
+
+    <!-- Head -->
+    <circle cx="437" cy="368" r="62" fill="#dda377"/>
+    <!-- Hair -->
+    <path d="M375 362c0-38 28-66 62-66s62 28 62 66c0 10-8 14-16 8-12-9-28-14-46-14s-34 5-46 14c-8 6-16 2-16-8z" fill="#2f231c"/>
+    <!-- Hair bun -->
+    <circle cx="437" cy="292" r="20" fill="#2f231c"/>
+
+    <!-- Arm reaching to the rack -->
+    <path d="M356 536c-30 14-56 44-72 82" stroke="#3f6f5a" stroke-width="34" stroke-linecap="round" fill="none"/>
+    <path d="M290 620c-8 22-18 42-30 58" stroke="#dda377" stroke-width="26" stroke-linecap="round" fill="none"/>
+    <!-- Hand on garment -->
+    <circle cx="263" cy="686" r="17" fill="#dda377"/>
+
+    <!-- Second arm, relaxed -->
+    <path d="M518 536c26 16 44 42 52 76" stroke="#3f6f5a" stroke-width="34" stroke-linecap="round" fill="none"/>
+    <path d="M570 616c4 24 2 44-4 62" stroke="#dda377" stroke-width="26" stroke-linecap="round" fill="none"/>
+    <circle cx="564" cy="690" r="16" fill="#dda377"/>
+  </g>
+
+
+
+
+  <!-- ============ Basket of finds ============ -->
+  <g>
+    <path d="M96 752h180l-16 92H112z" fill="#c9a878"/>
+    <path d="M96 752h180l-4 20H100z" fill="#b8975f"/>
+    <path d="M116 772v72M148 772v72M180 772v72M212 772v72M244 772v72"
+          stroke="#b8975f" stroke-width="6" stroke-linecap="round"/>
+    <!-- folded fabrics poking out -->
+    <path d="M124 752c6-26 22-40 40-38l6 38z" fill="#c96a4e"/>
+    <path d="M182 752c4-30 24-44 44-40l4 40z" fill="#4f7f63"/>
+    <path d="M236 752c8-20 24-30 38-26l-2 26z" fill="#d97706"/>
+  </g>
+
+  <!-- Price tag easter egg -->
+  <g transform="rotate(-8 700 808)">
+    <rect x="654" y="780" width="104" height="58" rx="10" fill="#fffdfb" stroke="#e0cdb6" stroke-width="3"/>
+    <path d="M672 798h68M672 814h44" stroke="#c9b49a" stroke-width="5" stroke-linecap="round"/>
+  </g>
+</svg>
