@@ -251,9 +251,6 @@ body.qt-session {
 
 .qt-btn-no { background: var(--qt-danger-soft); color: var(--qt-danger); border-color: #f5c0b5; }
 @media (hover: hover) { .qt-btn-no:hover { background: #fbd7d0; border-color: #eba496; } }
-#qt-triage.qt-inverted-question #qt-yes { margin-bottom: 10px; }
-#qt-triage.qt-inverted-question #qt-no { margin-bottom: 0; }
-
 .qt-btn-ghost { background: var(--qt-surface-2); color: var(--qt-text); border-color: var(--qt-line); margin-top: 10px; }
 @media (hover: hover) { .qt-btn-ghost:hover { background: var(--qt-surface-hover); border-color: #d6c2ad; } }
 
