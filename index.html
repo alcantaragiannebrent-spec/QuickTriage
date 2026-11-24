@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QuickTriage — Thirty minutes of deciding, cut to three questions</title>
+  <meta name="description" content="QuickTriage runs any clothing item through three quick checks — plan, fit, and confidence — so you stop debating and start deciding. Built for choosing at home and shopping ukay-ukay.">
+  <meta name="theme-color" content="#fdf6ec">
+
+  <!-- Open Graph / social preview (edit these when you deploy) -->
+  <meta property="og:title" content="QuickTriage — Three checks. One clear decision.">
+  <meta property="og:description" content="Stop the thirty-minute wardrobe debate. Three quick checks on any item you're holding.">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/home.css">
+</head>
+<body class="qt-home">
+
+  <a class="qt-skip-link" href="#main">Skip to content</a>
+
+  <!-- ================= HEADER ================= -->
+  <header class="qt-header">
+    <div class="qt-container qt-header-inner">
+      <a class="qt-logo" href="index.html" aria-label="QuickTriage home">
+        <!-- Logo mark: a hanger inside a rounded square -->
+        <svg viewBox="0 0 32 32" role="img" aria-hidden="true" focusable="false">
+          <rect x="1" y="1" width="30" height="30" rx="9" fill="#261e17"/>
+          <path d="M16 9.5a2.4 2.4 0 1 0-2.4-2.4" fill="none" stroke="#fcd34d" stroke-width="2" stroke-linecap="round"/>
+          <path d="M16 9.5v2.2" fill="none" stroke="#fcd34d" stroke-width="2" stroke-linecap="round"/>
+          <path d="M16 11.7 7.6 17.2c-1 .7-.5 2.3.7 2.3h15.4c1.2 0 1.7-1.6.7-2.3L16 11.7Z"
+                fill="none" stroke="#fcd34d" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M10 22.5v1.2M22 22.5v1.2" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span>QuickTriage</span>
+      </a>
+
+      <nav class="qt-nav" aria-label="Main">
+        <a href="#how-it-works">How it works</a>
+        <a href="#why-it-works">Why it works</a>
+      </nav>
+
+      <a class="qt-btn qt-btn--primary qt-btn--sm" href="session.html">Start a session</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ================= HERO ================= -->
+    <section class="qt-hero" id="intro">
+      <div class="qt-container qt-hero-grid">
+
+        <div class="qt-hero-copy">
+          <p class="qt-kicker">The smart clothing checklist</p>
+          <h1>Thirty minutes of deciding, cut to three questions.</h1>
+          <p class="qt-hero-lede">
+            QuickTriage runs any item you are holding through three fast checks — plan, fit,
+            and confidence. Fifteen seconds per item, and the debate is over before it starts.
+          </p>
+
+          <div class="qt-hero-actions">
+            <a class="qt-btn qt-btn--primary" href="session.html">
+              Start a session
+              <svg class="qt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+            </a>
+            <a class="qt-textlink" href="#how-it-works">
+              See how it works
+              <svg class="qt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5v14"/><path d="m6 13 6 6 6-6"/></svg>
+            </a>
+          </div>
+
+          <ul class="qt-hero-meta">
+            <li>
+              <svg class="qt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+              No account, nothing saved
+            </li>
+            <li>
+              <svg class="qt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+              Works offline once loaded
+            </li>
+          </ul>
+        </div>
+
+        <figure class="qt-hero-figure">
+          <!--
+            HERO PHOTO
+            Replace this src with your own image, e.g.:
+              <img src="assets/img/ukay-ukay.jpg" alt="..." width="900" height="990">
+            Keep the aspect ratio close to 900:860 or the frame will crop oddly.
+          -->
+          <img class="qt-hero-img"
+               src="assets/img/hero-placeholder.svg"
+               alt="Illustration placeholder: a person browsing a rack of secondhand clothes"
+               width="900" height="860" decoding="async">
+
+          <span class="qt-hero-chip">
+            <span class="qt-chip-dot">
+              <svg class="qt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+            </span>
+            All three checks passed — wear it
+          </span>
+        </figure>
+
+      </div>
+    </section>
+
+    <!-- ================= HOW IT WORKS ================= -->
+    <section class="qt-band qt-band--sand" id="how-it-works">
+      <div class="qt-container">
+        <div class="qt-section-head">
+          <p class="qt-kicker">How it works</p>
+          <h2>Three checks, in the order that kills a bad pick fastest.</h2>
+          <p>
+            Each check is a yes-or-no question with a line of context. The order matters:
+            the cheapest dealbreakers come first, so you rarely need all three.
+          </p>
+        </div>
+
+        <div class="qt-steps">
+
+          <article class="qt-step">
+            <span class="qt-step-num">01</span>
+            <span class="qt-step-icon">
+              <svg class="qt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M12 7v5l3 2"/>
+              </svg>
+            </span>
+            <h3>Check the plan</h3>
+            <p>Does it fit today's schedule and the weather you'll actually be standing in?</p>
+          </article>
+
+          <article class="qt-step">
+            <span class="qt-step-num">02</span>
+            <span class="qt-step-icon">
+              <svg class="qt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M3 7l3-3h12l3 3"/>
+                <path d="M4 7v12a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V7"/>
+                <path d="M9 7v4a3 3 0 0 0 6 0V7"/>
+              </svg>
+            </span>
+            <h3>Check the fit and condition</h3>
+            <p>Right size, clean, ready to wear — nothing that needs mending before you can leave.</p>
+          </article>
+
+          <article class="qt-step">
+            <span class="qt-step-num">03</span>
+            <span class="qt-step-icon">
+              <svg class="qt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 20s-7-4.35-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.65-7 9-7 9Z"/>
+              </svg>
+            </span>
+            <h3>Check the confidence</h3>
+            <p>Would you want to change out of it by lunchtime? Then you already know the answer.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= WHY IT WORKS ================= -->
+    <section class="qt-band" id="why-it-works">
+      <div class="qt-container">
+        <div class="qt-section-head">
+          <p class="qt-kicker">Why it works</p>
+          <h2>A checklist, because willpower runs out.</h2>
+          <p>
+            Decision fatigue is real. A short written checklist replaces the mood you happen to be in
+            with the same three questions every time.
+          </p>
+        </div>
+
+        <div class="qt-checklist">
+
+          <article class="qt-check-card">
+            <span class="qt-check-icon">
+              <svg class="qt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </span>
+            <h3>It stops impulse buys</h3>
+            <p>The first check exists purely to catch the item you want because it is cheap, not because it works.</p>
+            <p class="qt-check-quote">"I have three of these already."</p>
+          </article>
+
+          <article class="qt-check-card">
+            <span class="qt-check-icon">
+              <svg class="qt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            </span>
+            <h3>It catches flaws you'd miss</h3>
+            <p>Collar, armpits, zippers, seams. In a dim ukay-ukay aisle you need the prompt, not sharper eyes.</p>
+            <p class="qt-check-quote">"Checked in daylight, not in the fitting room."</p>
+          </article>
+
+          <article class="qt-check-card">
+            <span class="qt-check-icon qt-check-icon--pass">
+              <svg class="qt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+            </span>
+            <h3>It makes the answer obvious</h3>
+            <p>A verdict appears at the end of every item. No lingering maybe pile, no re-deciding tomorrow.</p>
+            <p class="qt-check-quote">"Two noes and it's back on the rack."</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CLOSING CTA ================= -->
+    <section class="qt-cta" id="start-a-session">
+      <div class="qt-container">
+        <h2>Have something in your hands right now?</h2>
+        <p>Open a session and run it through the three checks. It takes about fifteen seconds.</p>
+        <a class="qt-btn qt-btn--primary" href="session.html">
+          Start a session
+          <svg class="qt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+        </a>
+
+        <div class="qt-cta-app">
+          <svg class="qt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <rect x="4" y="3" width="16" height="18" rx="2"/>
+            <path d="M9 8h6M9 12h6M9 16h3"/>
+          </svg>
+          <span>
+            <strong>Two modes, one checklist</strong>
+            Choosing at home or shopping ukay-ukay — the questions change, the habit doesn't.
+          </span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="qt-footer">
+    <div class="qt-container">
+      <div class="qt-footer-top">
+        <div>
+          <a class="qt-logo" href="index.html" aria-label="QuickTriage home">
+            <svg viewBox="0 0 32 32" role="img" aria-hidden="true" focusable="false">
+              <rect x="1" y="1" width="30" height="30" rx="9" fill="#261e17"/>
+              <path d="M16 9.5a2.4 2.4 0 1 0-2.4-2.4" fill="none" stroke="#fcd34d" stroke-width="2" stroke-linecap="round"/>
+              <path d="M16 9.5v2.2" fill="none" stroke="#fcd34d" stroke-width="2" stroke-linecap="round"/>
+              <path d="M16 11.7 7.6 17.2c-1 .7-.5 2.3.7 2.3h15.4c1.2 0 1.7-1.6.7-2.3L16 11.7Z"
+                    fill="none" stroke="#fcd34d" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M10 22.5v1.2M22 22.5v1.2" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span>QuickTriage</span>
+          </a>
+          <p class="qt-footer-blurb">
+            Three checks on any item you're holding, so the thirty-minute debate never starts.
+          </p>
+        </div>
+
+        <nav class="qt-footer-links" aria-label="Footer">
+          <a href="index.html">Homepage</a>
+          <a href="session.html">Session</a>
+          <a href="#how-it-works">How it works</a>
+          <a href="#why-it-works">Why it works</a>
+        </nav>
+      </div>
+
+      <div class="qt-footer-bottom">
+        <span>&copy; <span id="qt-year">2026</span> QuickTriage. All rights reserved.</span>
+        <span>Made for people who overthink getting dressed.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Section rail (desktop). Populated by home.js from the list below. -->
+  <nav id="qt-rail" aria-label="Section navigation"></nav>
+
+  <script src="assets/js/home.js"></script>
+</body>
+</html>

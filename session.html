@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QuickTriage — Start a session</title>
+  <meta name="description" content="Run any item you're holding through three quick checks. Pick a mode, answer three questions, get a verdict.">
+  <meta name="theme-color" content="#fdf6ec">
+  <meta name="robots" content="noindex">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/session.css">
+</head>
+<body class="qt-session">
+
+  <a class="qt-skip-link" href="#qt-root">Skip to the checklist</a>
+
+  <!-- Thin bar so the app page stays part of the site -->
+  <div class="qt-session-bar">
+    <div class="qt-container qt-session-bar-inner">
+      <a class="qt-logo" href="index.html" aria-label="QuickTriage home">
+        <svg viewBox="0 0 32 32" role="img" aria-hidden="true" focusable="false">
+          <rect x="1" y="1" width="30" height="30" rx="9" fill="#261e17"/>
+          <path d="M16 9.5a2.4 2.4 0 1 0-2.4-2.4" fill="none" stroke="#fcd34d" stroke-width="2" stroke-linecap="round"/>
+          <path d="M16 9.5v2.2" fill="none" stroke="#fcd34d" stroke-width="2" stroke-linecap="round"/>
+          <path d="M16 11.7 7.6 17.2c-1 .7-.5 2.3.7 2.3h15.4c1.2 0 1.7-1.6.7-2.3L16 11.7Z"
+                fill="none" stroke="#fcd34d" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+        <span>QuickTriage</span>
+      </a>
+
+      <a class="qt-backlink" href="index.html">
+        <svg class="qt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>
+        Back to site
+      </a>
+    </div>
+  </div>
+
+  <main class="qt-session-main">
+    <div class="qt-root" id="qt-root">
+
+      <div class="qt-app">
+
+        <!-- ---------- SCREEN 1: choose context ---------- -->
+        <section class="qt-screen qt-active" id="qt-intake" aria-labelledby="qt-intake-title">
+          <p class="qt-kicker">QuickTriage</p>
+          <h1 class="qt-h1" id="qt-intake-title">Three checks on the item in your hands.</h1>
+          <p class="qt-sub">
+            Pick the situation, then answer three quick questions. You'll get a clear
+            verdict in about fifteen seconds.
+          </p>
+
+          <fieldset style="border:0;margin:0;padding:0;">
+            <legend class="qt-field-label">Where are you right now?</legend>
+
+            <div class="qt-ctx-grid" role="radiogroup" aria-labelledby="qt-intake-title">
+
+              <button type="button" class="qt-ctx" data-ctx="home" role="radio" aria-checked="false" tabindex="0">
+                <span class="qt-ctx-icon">
+                  <svg class="qt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M3 10.5 12 3l9 7.5"/>
+                    <path d="M5 9.8V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.8"/>
+                    <path d="M9.5 21v-6h5v6"/>
+                  </svg>
+                </span>
+                <span class="qt-ctx-body">
+                  <span class="qt-ctx-title">Choosing at home</span>
+                  <span class="qt-ctx-desc">Getting dressed from what you already own</span>
+                </span>
+              </button>
+
+              <button type="button" class="qt-ctx" data-ctx="shop" role="radio" aria-checked="false" tabindex="0">
+                <span class="qt-ctx-icon">
+                  <svg class="qt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M3 7l3-3h12l3 3"/>
+                    <path d="M4 7v12a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V7"/>
+                    <path d="M9 7v4a3 3 0 0 0 6 0V7"/>
+                  </svg>
+                </span>
+                <span class="qt-ctx-body">
+                  <span class="qt-ctx-title">Shopping ukay-ukay</span>
+                  <span class="qt-ctx-desc">Deciding on a secondhand item on the rack</span>
+                </span>
+              </button>
+
+            </div>
+          </fieldset>
+
+          <button type="button" class="qt-btn qt-btn-primary" id="qt-btn-begin" disabled aria-disabled="true">
+            Begin checks
+            <svg class="qt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+          </button>
+
+          <p style="margin:14px 0 0;font-size:0.78rem;line-height:1.5;color:var(--qt-faint);text-align:center;">
+            Nothing is uploaded or stored.
+          </p>
+        </section>
+
+        <!-- ---------- SCREEN 2: the three checks ---------- -->
+        <section class="qt-screen" id="qt-triage" aria-labelledby="qt-q-title" aria-live="polite">
+          <div class="qt-meta">
+            <span class="qt-badge" id="qt-ctx-badge">Choosing at home</span>
+            <span class="qt-badge" id="qt-item-counter">Check 1 of 3</span>
+          </div>
+
+          <div class="qt-bar" role="progressbar" aria-labelledby="qt-item-counter"
+               aria-valuemin="1" aria-valuemax="3" aria-valuenow="1" id="qt-progress">
+            <div class="qt-bar-fill" id="qt-bar-fill"></div>
+          </div>
+
+          <h2 class="qt-h2" id="qt-q-title">Does it suit today's plan?</h2>
+          <p class="qt-sub" id="qt-q-help">Weather, schedule, how long you'll be on your feet.</p>
+
+          <p class="qt-helper" id="qt-tip">If the answer needs a "well, maybe"—it's a no.</p>
+
+          <button type="button" class="qt-btn qt-btn-yes" id="qt-yes">
+            <svg class="qt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+            Yes, that's covered
+          </button>
+          <button type="button" class="qt-btn qt-btn-no" id="qt-no">
+            <svg class="qt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            No, it isn't
+          </button>
+          <button type="button" class="qt-btn qt-btn-back" id="qt-back">← Back</button>
+        </section>
+
+        <!-- ---------- SCREEN 3: verdict ---------- -->
+        <section class="qt-screen" id="qt-verdict" aria-labelledby="qt-verdict-title" aria-live="polite">
+          <div class="qt-verdict" id="qt-verdict-box">
+            <span class="qt-verdict-emoji" id="qt-verdict-emoji" aria-hidden="true"></span>
+            <h2 id="qt-verdict-title">Grab and go</h2>
+            <p id="qt-verdict-sub">It passed all three checks.</p>
+          </div>
+
+          <ul class="qt-report" id="qt-report"></ul>
+
+          <aside class="qt-recommendation" id="qt-recommendation" aria-live="polite">
+            <span class="qt-recommendation-label">Line recommendation</span>
+            <p id="qt-recommendation-text">Wear it and enjoy the rest of your day.</p>
+          </aside>
+
+          <button type="button" class="qt-btn qt-btn-primary" id="qt-check-another">
+            Check another item
+            <svg class="qt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5v14"/><path d="m6 13 6 6 6-6" transform="rotate(180 12 12)"/></svg>
+          </button>
+          <button type="button" class="qt-btn qt-btn-ghost" id="qt-see-summary">See the summary</button>
+        </section>
+
+        <!-- ---------- SCREEN 4: summary ---------- -->
+        <section class="qt-screen" id="qt-summary" aria-labelledby="qt-summary-title">
+          <p class="qt-kicker">Session summary</p>
+          <h2 class="qt-h2" id="qt-summary-title">Here's how the pile broke down.</h2>
+
+          <div class="qt-stats">
+            <div class="qt-stat qt-stat-approved">
+              <span class="qt-stat-num" id="qt-stat-approved">0</span>
+              <span class="qt-stat-label">Passed all three</span>
+            </div>
+            <div class="qt-stat">
+              <span class="qt-stat-num" id="qt-stat-rejected">0</span>
+              <span class="qt-stat-label">Sent back</span>
+            </div>
+            <div class="qt-stat qt-stat-wide">
+              <span class="qt-stat-num" id="qt-stat-total">0</span>
+              <span class="qt-stat-label">Items checked in this session</span>
+            </div>
+          </div>
+
+          <div class="qt-breakdown" id="qt-breakdown"></div>
+
+          <aside class="qt-session-recommendation" id="qt-session-recommendation" aria-live="polite">
+            <span class="qt-recommendation-label">What to do next</span>
+            <p id="qt-session-recommendation-text">Start checking items to build your session takeaway.</p>
+          </aside>
+
+          <button type="button" class="qt-btn qt-btn-primary" id="qt-start-over">Start a new session</button>
+          <button type="button" class="qt-btn qt-btn-ghost" id="qt-back-home">Back to the homepage</button>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <p class="qt-session-foot">QuickTriage keeps it to three questions so you can get back to your day.</p>
+
+  <script src="assets/js/session.js"></script>
+</body>
+</html>
