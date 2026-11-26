@@ -1,5 +1,5 @@
 /* ==========================================================================
-   QuickTriage home page behaviour
+   QuickTriage — home page behaviour
    1. Builds the desktop section rail from real section IDs
    2. Highlights the section currently in view
    3. Keeps the footer year current
@@ -20,7 +20,7 @@
     { id: "intro",          label: "Intro" },
     { id: "how-it-works",   label: "How it works" },
     { id: "why-it-works",   label: "Why it works" },
-    { id: "start-a-session", label: "Choose" }
+    { id: "start-a-session", label: "Start" }
   ];
 
   var rail = document.getElementById("qt-rail");
