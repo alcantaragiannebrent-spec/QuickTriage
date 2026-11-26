@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>QuickTriage: Check an outfit or used clothes</title>
-  <meta name="description" content="Answer three simple questions to choose an outfit or check used clothes before you buy them.">
+  <title>QuickTriage — Start a session</title>
+  <meta name="description" content="Run any item you're holding through three quick checks. Pick a mode, answer three questions, get a verdict.">
   <meta name="theme-color" content="#fdf6ec">
   <meta name="robots" content="noindex">
 
@@ -13,11 +13,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="assets/css/styles.css">
-  <link rel="stylesheet" href="assets/css/session.css?v=2">
+  <link rel="stylesheet" href="assets/css/session.css">
 </head>
 <body class="qt-session">
 
-  <a class="qt-skip-link" href="#qt-root">Skip to the questions</a>
+  <a class="qt-skip-link" href="#qt-root">Skip to the checklist</a>
 
   <!-- Thin bar so the app page stays part of the site -->
   <div class="qt-session-bar">
@@ -45,17 +45,17 @@
 
       <div class="qt-app">
 
-        <!-- SCREEN 1: choose what you are checking -->
+        <!-- ---------- SCREEN 1: choose context ---------- -->
         <section class="qt-screen qt-active" id="qt-intake" aria-labelledby="qt-intake-title">
           <p class="qt-kicker">QuickTriage</p>
-          <h1 class="qt-h1" id="qt-intake-title">Choose what to wear</h1>
+          <h1 class="qt-h1" id="qt-intake-title">Three checks on the item in your hands.</h1>
           <p class="qt-sub">
-            Answer three simple questions for a clear suggestion. Use this at home to pick
-            an outfit, or while shopping to check used clothes before you buy them.
+            Pick the situation, then answer three quick questions. You'll get a clear
+            verdict in about fifteen seconds.
           </p>
 
           <fieldset style="border:0;margin:0;padding:0;">
-            <legend class="qt-field-label">What are you choosing?</legend>
+            <legend class="qt-field-label">Where are you right now?</legend>
 
             <div class="qt-ctx-grid" role="radiogroup" aria-labelledby="qt-intake-title">
 
@@ -68,8 +68,8 @@
                   </svg>
                 </span>
                 <span class="qt-ctx-body">
-                  <span class="qt-ctx-title">An outfit from my closet</span>
-                  <span class="qt-ctx-desc">Choose clothes you already own</span>
+                  <span class="qt-ctx-title">Choosing at home</span>
+                  <span class="qt-ctx-desc">Getting dressed from what you already own</span>
                 </span>
               </button>
 
@@ -82,8 +82,8 @@
                   </svg>
                 </span>
                 <span class="qt-ctx-body">
-                  <span class="qt-ctx-title">Ukay-ukay</span>
-                  <span class="qt-ctx-desc">Check it before you buy it</span>
+                  <span class="qt-ctx-title">Shopping ukay-ukay</span>
+                  <span class="qt-ctx-desc">Deciding on a secondhand item on the rack</span>
                 </span>
               </button>
 
@@ -91,16 +91,16 @@
           </fieldset>
 
           <button type="button" class="qt-btn qt-btn-primary" id="qt-btn-begin" disabled aria-disabled="true">
-            Start questions
+            Begin checks
             <svg class="qt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
           </button>
 
           <p style="margin:14px 0 0;font-size:0.78rem;line-height:1.5;color:var(--qt-faint);text-align:center;">
-            Your answers are not saved.
+            Nothing is uploaded or stored.
           </p>
         </section>
 
-        <!-- SCREEN 2: the questions -->
+        <!-- ---------- SCREEN 2: the three checks ---------- -->
         <section class="qt-screen" id="qt-triage" aria-labelledby="qt-q-title" aria-live="polite">
           <div class="qt-meta">
             <span class="qt-badge" id="qt-ctx-badge">Choosing at home</span>
@@ -115,7 +115,7 @@
           <h2 class="qt-h2" id="qt-q-title">Does it suit today's plan?</h2>
           <p class="qt-sub" id="qt-q-help">Weather, schedule, how long you'll be on your feet.</p>
 
-          <p class="qt-helper" id="qt-tip">If it does not fit your day, choose a different outfit.</p>
+          <p class="qt-helper" id="qt-tip">If the answer needs a "well, maybe"—it's a no.</p>
 
           <button type="button" class="qt-btn qt-btn-yes" id="qt-yes">
             <svg class="qt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
@@ -125,18 +125,23 @@
             <svg class="qt-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
             No, it isn't
           </button>
-          <button type="button" class="qt-btn qt-btn-back" id="qt-back">Previous question</button>
+          <button type="button" class="qt-btn qt-btn-back" id="qt-back">← Back</button>
         </section>
 
-        <!-- SCREEN 3: result -->
+        <!-- ---------- SCREEN 3: verdict ---------- -->
         <section class="qt-screen" id="qt-verdict" aria-labelledby="qt-verdict-title" aria-live="polite">
           <div class="qt-verdict" id="qt-verdict-box">
             <span class="qt-verdict-emoji" id="qt-verdict-emoji" aria-hidden="true"></span>
-            <h2 id="qt-verdict-title">Good choice</h2>
-            <p id="qt-verdict-sub">It passed all three questions.</p>
+            <h2 id="qt-verdict-title">Grab and go</h2>
+            <p id="qt-verdict-sub">It passed all three checks.</p>
           </div>
 
           <ul class="qt-report" id="qt-report"></ul>
+
+          <aside class="qt-recommendation" id="qt-recommendation" aria-live="polite">
+            <span class="qt-recommendation-label">Line recommendation</span>
+            <p id="qt-recommendation-text">Wear it and enjoy the rest of your day.</p>
+          </aside>
 
           <button type="button" class="qt-btn qt-btn-primary" id="qt-check-another">
             Check another item
@@ -145,23 +150,23 @@
           <button type="button" class="qt-btn qt-btn-ghost" id="qt-see-summary">See the summary</button>
         </section>
 
-        <!-- SCREEN 4: summary -->
+        <!-- ---------- SCREEN 4: summary ---------- -->
         <section class="qt-screen" id="qt-summary" aria-labelledby="qt-summary-title">
           <p class="qt-kicker">Session summary</p>
-          <h2 class="qt-h2" id="qt-summary-title">Your results</h2>
+          <h2 class="qt-h2" id="qt-summary-title">Here's how the pile broke down.</h2>
 
           <div class="qt-stats">
             <div class="qt-stat qt-stat-approved">
               <span class="qt-stat-num" id="qt-stat-approved">0</span>
-              <span class="qt-stat-label">Passed all three questions</span>
+              <span class="qt-stat-label">Passed all three</span>
             </div>
             <div class="qt-stat">
               <span class="qt-stat-num" id="qt-stat-rejected">0</span>
-              <span class="qt-stat-label">Did not pass</span>
+              <span class="qt-stat-label">Sent back</span>
             </div>
             <div class="qt-stat qt-stat-wide">
               <span class="qt-stat-num" id="qt-stat-total">0</span>
-              <span class="qt-stat-label">Items checked</span>
+              <span class="qt-stat-label">Items checked in this session</span>
             </div>
           </div>
 
@@ -169,10 +174,10 @@
 
           <aside class="qt-session-recommendation" id="qt-session-recommendation" aria-live="polite">
             <span class="qt-recommendation-label">What to do next</span>
-            <p id="qt-session-recommendation-text">Check an item to see a suggestion here.</p>
+            <p id="qt-session-recommendation-text">Start checking items to build your session takeaway.</p>
           </aside>
 
-          <button type="button" class="qt-btn qt-btn-primary" id="qt-start-over">Start over</button>
+          <button type="button" class="qt-btn qt-btn-primary" id="qt-start-over">Start a new session</button>
           <button type="button" class="qt-btn qt-btn-ghost" id="qt-back-home">Back to the homepage</button>
         </section>
 
@@ -180,8 +185,8 @@
     </div>
   </main>
 
-  <p class="qt-session-foot">Three simple questions to help you choose what to wear.</p>
+  <p class="qt-session-foot">QuickTriage keeps it to three questions so you can get back to your day.</p>
 
-  <script src="assets/js/session.js?v=2"></script>
+  <script src="assets/js/session.js"></script>
 </body>
 </html>
