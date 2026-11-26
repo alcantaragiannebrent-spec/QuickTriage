@@ -289,6 +289,7 @@ body.qt-session {
 .qt-row-suggestion { margin: 9px 0 0; padding-left: 10px; border-left: 3px solid #e7a89b; font-size: 0.82rem; line-height: 1.5; color: var(--qt-muted); }
 .qt-row-suggestion strong { color: var(--qt-danger-strong); }
 
+.qt-recommendation,
 .qt-session-recommendation {
   position: relative;
   overflow: hidden;
@@ -298,6 +299,9 @@ body.qt-session {
   border-radius: var(--qt-radius-md);
   background: linear-gradient(135deg, #fffdf9 0%, #f8eddf 100%);
 }
+.qt-recommendation-pass { border-color: #b4dfc4; background: linear-gradient(135deg, #f7fcf9 0%, #e8f6ed 100%); }
+.qt-recommendation-skip { border-color: #f5c0b5; background: linear-gradient(135deg, #fffaf8 0%, #fdeee9 100%); }
+.qt-recommendation::before,
 .qt-session-recommendation::before {
   content: "";
   position: absolute;
@@ -307,6 +311,8 @@ body.qt-session {
   width: 4px;
   background: var(--qt-primary);
 }
+.qt-recommendation-pass::before { background: var(--qt-success); }
+.qt-recommendation-skip::before { background: var(--qt-danger); }
 .qt-recommendation-label {
   display: block;
   margin-bottom: 5px;
@@ -317,6 +323,7 @@ body.qt-session {
   text-transform: uppercase;
   color: var(--qt-primary-strong);
 }
+.qt-recommendation p,
 .qt-session-recommendation p {
   margin: 0;
   font-size: 0.88rem;
