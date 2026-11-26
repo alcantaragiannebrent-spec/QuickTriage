@@ -1,5 +1,5 @@
 /* ==========================================================================
-   QuickTriage — triage logic
+   QuickTriage triage logic
    --------------------------------------------------------------------------
    Single source of truth for the questions. To reword a check, edit the
    QUESTIONS object below. Nothing else needs to change.
@@ -18,68 +18,68 @@
     home: [
       {
         id: "plan",
-        title: "Does it suit today's plan?",
-        help: "Weather, schedule, how long you'll be on your feet.",
-        tip: "If the answer needs a “well, maybe”—it's a no.",
-        plain: "Fits your actual plan",
-        failLabel: "today's plan",
-        suggestion: "Try a layer or shoes that suit today's weather and schedule."
+        title: "Will this outfit work for your plans today?",
+        help: "Think about the weather and what you will do.",
+        tip: "If it does not fit your day, choose a different outfit.",
+        plain: "Works for today's plans",
+        failLabel: "matching your plans",
+        suggestion: "Choose something that suits the weather and what you will do today."
       },
       {
         id: "fit",
-        title: "Does it fit and feel right on?",
-        help: "Right size, nothing digging in, comfortable to sit in.",
-        tip: "Judge the item you'd have to sit in all afternoon, not the one you'd admire in a mirror.",
-        plain: "Fits and feels right",
+        title: "Does it fit and feel comfortable?",
+        help: "Can you sit, walk, and move comfortably?",
+        tip: "If it feels tight or uncomfortable, choose something else.",
+        plain: "Fits and feels comfortable",
         failLabel: "fit and comfort",
-        suggestion: "Choose a size or cut that lets you sit, reach, and move comfortably."
+        suggestion: "Choose clothes that let you sit, reach, and move comfortably."
       },
       {
         id: "confidence",
-        title: "Would you still be happy in it by lunchtime?",
-        help: "Not at first glance—after four hours of wearing it.",
-        tip: "If you'd want to change the moment you're out the door, that's your answer.",
-        plain: "Still comfortable by lunchtime",
-        failLabel: "all-day comfort",
-        suggestion: "Swap it for something you'll still feel good wearing after a few hours."
+        title: "Do you feel good in this outfit?",
+        help: "You should like how you look and feel.",
+        tip: "If you do not feel good in it, choose something else.",
+        plain: "Feels right for you",
+        failLabel: "feeling good in it",
+        suggestion: "Choose something you will still feel good wearing after a few hours."
       }
     ],
     shop: [
       {
         id: "plan",
-        title: "Do you have an occasion for it this month?",
-        help: "A real date, not a someday version of your life.",
-        tip: "Bought for a hypothetical event is how the rag pile gets bigger.",
-        plain: "Has a real occasion this month",
-        failLabel: "a real occasion",
-        suggestion: "Name a date this month you'll wear it; if none comes to mind, leave it on the rack."
+        title: "Will you wear it this month?",
+        help: "Think of a real day or event.",
+        tip: "If you cannot think of a time to wear it, you may not need it.",
+        plain: "Has a time to wear it",
+        failLabel: "finding a time to wear it",
+        suggestion: "If you cannot name a day to wear it, save your money."
       },
       {
         id: "fit",
-        title: "Is it ready to wear without repairs?",
-        help: "Check for missing buttons, a stuck zipper, or torn seams.",
-        tip: "If it needs mending before you can wear it, answer no.",
-        plain: "Wearable without repairs",
-        failLabel: "repairs before wear",
-        suggestion: "Check the repair and cost; if it is more than a quick, affordable fix, leave it.",
-        yesLabel: "Yes, it's ready to wear",
-        noLabel: "No, it needs repairs"
+        title: "Can you wear it as it is?",
+        help: "Check the buttons, zipper, and seams.",
+        tip: "If it needs fixing before you can wear it, answer no.",
+        plain: "Ready to wear as it is",
+        failLabel: "needing a fix",
+        suggestion: "Check what needs fixing. If it costs too much or takes too much work, leave it.",
+        yesLabel: "Yes, I can wear it",
+        noLabel: "No, it needs fixing"
       },
       {
         id: "confidence",
-        title: "If you saw it in your closet tomorrow, would you wear it?",
-        help: "Picture it next to what you already own.",
-        tip: "If it only works in a version of itself you'd have to shop for—leave it on the rack.",
-        plain: "You'd actually wear it",
-        failLabel: "a place in your closet",
-        suggestion: "Make sure it works with three pieces you already own; don't buy it if it needs another purchase."
+        title: "Will it go with clothes you already own?",
+        help: "Think of an outfit you can make with it.",
+        tip: "If you need to buy more clothes to wear it, it may not be worth it.",
+        plain: "Goes with your clothes",
+        failLabel: "matching clothes you own",
+        suggestion: "Only buy it if it works with something you already own."
       }
     ]
   };
 
   var CONTEXT_LABELS = {
-    home: "Choosing at home",
-    shop: "Shopping ukay-ukay"
+    home: "Choosing an outfit",
+    shop: "Shopping for used clothes"
   };
 
   /* ======================================================================
@@ -88,7 +88,7 @@
   var state = {
     ctx: null,          // "home" | "shop"
     step: 0,            // index into the current question list
-    answers: {},        // { plan: true, fit: false, ... }  — true means "passed"
+    answers: {},        // Each answer is true if the check passed.
     items: [],          // completed items: { ctx, answers, passed }
     itemNumber: 0
   };
@@ -167,7 +167,7 @@
   }
 
   /* ======================================================================
-     6. INTAKE — choosing a context
+     6. INTAKE: choosing a context
      ====================================================================== */
   function selectContext(ctx) {
     state.ctx = ctx;
@@ -208,7 +208,7 @@
   });
 
   /* ======================================================================
-     7. TRIAGE — rendering each check
+     7. TRIAGE: rendering each check
      ====================================================================== */
   function currentQuestions() {
     return QUESTIONS[state.ctx] || [];
@@ -242,17 +242,16 @@
     void els.qTitle.offsetWidth;
     els.qTitle.classList.add("qt-in");
 
-    // The third check is the tiebreaker — label the buttons accordingly
-    var isLast = state.step === questions.length - 1;
-    els.yes.innerHTML = ICONS.check + (question.yesLabel || (isLast ? "Yes, I'd wear it" : "Yes, that's covered"));
-    els.no.innerHTML = ICONS.cross + (question.noLabel || (isLast ? "No, I wouldn't" : "No, it isn't"));
+    // The final question uses its own answer labels.
+    els.yes.innerHTML = ICONS.check + (question.yesLabel || "Yes");
+    els.no.innerHTML = ICONS.cross + (question.noLabel || "No");
 
     els.yes.classList.add("qt-btn-yes");
     els.yes.classList.remove("qt-btn-no");
     els.no.classList.add("qt-btn-no");
     els.no.classList.remove("qt-btn-yes");
 
-    els.back.textContent = state.step === 0 ? "← Change mode" : "← Back";
+    els.back.textContent = state.step === 0 ? "Change choice" : "Previous question";
 
     els.yes.focus({ preventScroll: true });
   }
@@ -301,10 +300,12 @@
     els.verdictBox.classList.add(passed ? "qt-verdict-grab" : "qt-verdict-skip", "qt-verdict-in");
 
     els.verdictEmoji.innerHTML = passed ? ICONS.check : ICONS.cross;
-    els.verdictTitle.textContent = passed ? "Grab and go" : "Put it back";
+    els.verdictTitle.textContent = passed
+      ? "Good choice"
+      : state.ctx === "shop" ? "Leave it" : "Choose another outfit";
     els.verdictSub.textContent = passed
-      ? "It passed all three checks."
-      : "It missed: " + failedQuestions.map(function (q) { return q.failLabel; }).join(", ") + ".";
+      ? "It passed all three questions."
+      : "It did not pass all three questions. Check the notes below.";
 
     els.recommendation.classList.remove("qt-recommendation-pass", "qt-recommendation-skip");
     els.recommendation.classList.add(passed ? "qt-recommendation-pass" : "qt-recommendation-skip");
@@ -318,10 +319,10 @@
           '<div class="qt-report-line">' +
             '<span class="qt-report-name">' + escapeHtml(q.plain) + "</span>" +
             '<span class="qt-mark ' + (ok ? "qt-mark-pass" : "qt-mark-fail") + '">' +
-              (ok ? "Pass" : "Fail") +
+              (ok ? "Good" : "Needs a change") +
             "</span>" +
           "</div>" +
-          (ok ? "" : '<p class="qt-row-suggestion"><strong>Suggestion:</strong> ' + escapeHtml(q.suggestion) + "</p>") +
+          (ok ? "" : '<p class="qt-row-suggestion"><strong>Try this:</strong> ' + escapeHtml(q.suggestion) + "</p>") +
         "</li>"
       );
     }).join("");
@@ -341,7 +342,7 @@
 
     if (!state.items.length) {
       els.breakdown.innerHTML = '<p class="qt-bd-note">No items checked in this session yet.</p>';
-      els.sessionRecommendationText.textContent = "Check an item first, then use the result to decide what stays.";
+      els.sessionRecommendationText.textContent = "Check an item to see a suggestion here.";
       showScreen("summary");
       return;
     }
@@ -371,27 +372,29 @@
     }).join("");
 
     var note = worst.count > 0
-      ? '<p class="qt-bd-note" style="margin-top:14px">Most often stopped by: <strong>' +
+      ? '<p class="qt-bd-note" style="margin-top:14px">Most common issue: <strong>' +
           escapeHtml(worst.plain) + "</strong>.</p>"
-      : '<p class="qt-bd-note" style="margin-top:14px">Everything you checked passed every gate.</p>';
+      : '<p class="qt-bd-note" style="margin-top:14px">Every item passed all three questions.</p>';
 
     if (approved === state.items.length) {
       els.sessionRecommendationText.textContent =
-        approved + (approved === 1 ? " item passed" : " items passed") +
-        " every check. Keep these as your benchmark for future choices.";
+        approved + (approved === 1 ? " item" : " items") +
+        " passed every question. Use " + (approved === 1 ? "it" : "them") +
+        " as a guide next time.";
     } else if (approved === 0) {
       els.sessionRecommendationText.textContent =
-        "None cleared all three checks. The most common issue was " + worst.failLabel +
+        "No items passed all three questions. The most common issue was " + worst.failLabel +
         ". " + worst.suggestion;
     } else {
       els.sessionRecommendationText.textContent =
-        "Keep the " + approved + (approved === 1 ? " item" : " items") + " that passed; " +
-        "the " + rejected + (rejected === 1 ? " rejected item" : " rejected items") +
-        " most often fell short on " + worst.failLabel + ". " + worst.suggestion;
+        approved + (approved === 1 ? " item passed" : " items passed") +
+        " every question. Keep " + (approved === 1 ? "it" : "them") + ". " +
+        rejected + (rejected === 1 ? " item did" : " items did") +
+        " not pass every question. " + worst.suggestion;
     }
 
     els.breakdown.innerHTML =
-      '<p class="qt-bd-title">What stopped the ones that failed</p>' + rows + note;
+      '<p class="qt-bd-title">Results for each question</p>' + rows + note;
 
     showScreen("summary");
   }
@@ -410,26 +413,19 @@
   function getVerdictRecommendation(failedQuestions) {
     if (!failedQuestions.length) {
       return state.ctx === "shop"
-        ? "All three checks line up. It is worth buying, so plan to wear it this month."
-        : "All three checks line up. Wear it for today's plan and move on.";
+        ? "It passed all three questions. Plan to wear it this month."
+        : "It passed all three questions. Wear it today.";
     }
 
-    var labels = failedQuestions.map(function (q) { return q.failLabel; });
     if (failedQuestions.length === 1) {
       return state.ctx === "shop"
-        ? "This purchase hinges on " + labels[0] + ". Check the suggestion below; if you cannot resolve it before buying, leave it."
-        : "The only mismatch is " + labels[0] + ". Try the suggestion below, then choose something that feels like a clear yes.";
+        ? "Try the suggestion below. If you cannot fix the problem before buying, leave it."
+        : "Try the suggestion below, or choose another outfit.";
     }
 
     return state.ctx === "shop"
-      ? "It misses " + formatList(labels) + ". Unless you can address every issue before paying, put it back."
-      : "It misses " + formatList(labels) + ". Choose something that covers all of those needs today.";
-  }
-
-  function formatList(items) {
-    if (items.length < 2) return items[0] || "";
-    if (items.length === 2) return items[0] + " and " + items[1];
-    return items.slice(0, -1).join(", ") + ", and " + items[items.length - 1];
+      ? "Check each suggestion below. If you cannot fix the problems before buying, leave it."
+      : "Check each suggestion below, or choose another outfit.";
   }
 
   function resetSession() {
