@@ -79,7 +79,7 @@
 
   var CONTEXT_LABELS = {
     home: "Choosing an outfit",
-    shop: "Shopping for used clothes"
+    shop: "Ukay-ukay"
   };
 
   /* ======================================================================
@@ -125,8 +125,6 @@
     verdictTitle: $("qt-verdict-title"),
     verdictSub: $("qt-verdict-sub"),
     report: $("qt-report"),
-    recommendation: $("qt-recommendation"),
-    recommendationText: $("qt-recommendation-text"),
     checkAnother: $("qt-check-another"),
     seeSummary: $("qt-see-summary"),
     statApproved: $("qt-stat-approved"),
@@ -307,10 +305,6 @@
       ? "It passed all three questions."
       : "It did not pass all three questions. Check the notes below.";
 
-    els.recommendation.classList.remove("qt-recommendation-pass", "qt-recommendation-skip");
-    els.recommendation.classList.add(passed ? "qt-recommendation-pass" : "qt-recommendation-skip");
-    els.recommendationText.textContent = getVerdictRecommendation(failedQuestions);
-
     // Per-check report
     els.report.innerHTML = questions.map(function (q, i) {
       var ok = state.answers[q.id] === true;
@@ -408,24 +402,6 @@
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;");
-  }
-
-  function getVerdictRecommendation(failedQuestions) {
-    if (!failedQuestions.length) {
-      return state.ctx === "shop"
-        ? "It passed all three questions. Plan to wear it this month."
-        : "It passed all three questions. Wear it today.";
-    }
-
-    if (failedQuestions.length === 1) {
-      return state.ctx === "shop"
-        ? "Try the suggestion below. If you cannot fix the problem before buying, leave it."
-        : "Try the suggestion below, or choose another outfit.";
-    }
-
-    return state.ctx === "shop"
-      ? "Check each suggestion below. If you cannot fix the problems before buying, leave it."
-      : "Check each suggestion below, or choose another outfit.";
   }
 
   function resetSession() {
